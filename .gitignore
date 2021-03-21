@@ -3,3 +3,9 @@
 ################################################################################
 
 /PocServiceBus.Api/bin/Debug/netcoreapp3.1
+/.vs/PocServiceBus/v16/Server/sqlite3
+/PocServiceBus.Api/obj
+/PocServiceBus.Core/bin/Debug/netcoreapp3.1
+/PocServiceBus.Core/obj
+/PocServiceBus.MessageBus/bin/Debug/netcoreapp3.1
+/PocServiceBus.MessageBus/obj

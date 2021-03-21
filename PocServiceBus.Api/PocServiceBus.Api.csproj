@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PocServiceBus.Core\PocServiceBus.Core.csproj" />
+    <ProjectReference Include="..\PocServiceBus.MessageBus\PocServiceBus.MessageBus.csproj" />
+  </ItemGroup>
+
+
+</Project>
