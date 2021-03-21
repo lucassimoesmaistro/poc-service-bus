@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PocServiceBus.Core
+﻿namespace PocServiceBus.Core
 {
     public abstract class Message
     {

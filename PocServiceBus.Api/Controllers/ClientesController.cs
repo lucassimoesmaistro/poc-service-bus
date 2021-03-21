@@ -19,6 +19,13 @@ namespace PocServiceBus.Api.Controllers
         [HttpGet("clientes")]
         public async Task<IActionResult> Index()
         {
+
+            return Ok();
+        }
+
+        [HttpGet("clientes/send")]
+        public async Task<IActionResult> Enviar()
+        {
             ClienteCriadoEvent clienteCriadoEvent = new ClienteCriadoEvent();
 
             await _bus.SendMessage(clienteCriadoEvent);

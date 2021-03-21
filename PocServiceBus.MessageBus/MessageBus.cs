@@ -7,17 +7,19 @@ using System.Threading;
 
 namespace PocServiceBus.MessageBus
 {
-    public delegate void ProcessData(IntegrationEvent integrationEvent);
+    public delegate void ProcessData(string message);
     public class MessageBus : IMessageBus
     {
         private readonly QueueClient _queueClient;
-        public event ProcessData ProcessMessageReceived;
 
         private readonly string _connectionString;
         private readonly string _queue;
+
+        public event ProcessData ProcessMessageReceived;
+
         public MessageBus(string connectionString, string queue)
         {
-            t_connectionString = connectionString;
+            _connectionString = connectionString;
             _queue = queue;
             _queueClient = new QueueClient(_connectionString, _queue);
         }
@@ -42,9 +44,9 @@ namespace PocServiceBus.MessageBus
         }
         private async Task ProcessMessagesAsync(Message message, CancellationToken token)
         {
-            var integrationEvent = JsonSerializer.Deserialize<IntegrationEvent>(Encoding.UTF8.GetString(message.Body));
-            
-            ProcessMessageReceived?.Invoke(integrationEvent);
+            var messageBody = Encoding.UTF8.GetString(message.Body);
+
+            ProcessMessageReceived?.Invoke(messageBody);
 
             await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }
