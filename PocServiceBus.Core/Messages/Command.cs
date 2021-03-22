@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace PocServiceBus.Core
+namespace PocServiceBus.Core.Messages
 {
     public abstract class Command : Message, IRequest<bool>
     {

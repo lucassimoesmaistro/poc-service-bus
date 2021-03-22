@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using PocServiceBus.Core.Messages;
 using System.Threading.Tasks;
 
 namespace PocServiceBus.Core.Mediator

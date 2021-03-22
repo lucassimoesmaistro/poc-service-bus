@@ -2,34 +2,30 @@
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text;
-using PocServiceBus.Core.Integration;
 using System.Threading;
+using Microsoft.Extensions.Options;
 
-namespace PocServiceBus.MessageBus
+namespace PocServiceBus.BusMessaging
 {
-    public delegate void ProcessData(string message);
     public class MessageBus : IMessageBus
     {
+        private readonly IHandlerData _handlerData;
         private readonly QueueClient _queueClient;
-
-        private readonly string _connectionString;
-        private readonly string _queue;
-
-        public event ProcessData ProcessMessageReceived;
-
-        public MessageBus(string connectionString, string queue)
+        private readonly MessageQueueConfiguration _messageQueueConfiguration;
+        
+         public MessageBus(IHandlerData handlerData, IOptions<MessageQueueConfiguration> messageQueueConfiguration)
         {
-            _connectionString = connectionString;
-            _queue = queue;
-            _queueClient = new QueueClient(_connectionString, _queue);
+            _messageQueueConfiguration = messageQueueConfiguration.Value;
+            _handlerData = handlerData;
+            _queueClient = new QueueClient(_messageQueueConfiguration.Connectionstring, _messageQueueConfiguration.QueueName);
         }
 
-        public async Task SendMessage(IntegrationEvent integrationEvent)
+        public async Task SendMessage(Core.Messages.Message message)
         {
-            string data = JsonSerializer.Serialize(integrationEvent);
-            Message message = new Message(Encoding.UTF8.GetBytes(data));
+            string data = JsonSerializer.Serialize(message);
+            Message messageAz = new Message(Encoding.UTF8.GetBytes(data));
 
-            await _queueClient.SendAsync(message);
+            await _queueClient.SendAsync(messageAz);
         }
 
         public void RegisterOnMessageHandlerAndReceiveMessages()
@@ -46,7 +42,7 @@ namespace PocServiceBus.MessageBus
         {
             var messageBody = Encoding.UTF8.GetString(message.Body);
 
-            ProcessMessageReceived?.Invoke(messageBody);
+            await _handlerData.Handle(messageBody);
 
             await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }

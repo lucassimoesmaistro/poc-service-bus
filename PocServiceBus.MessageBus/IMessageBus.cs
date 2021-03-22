@@ -1,13 +1,12 @@
-﻿using PocServiceBus.Core.Integration;
+﻿using PocServiceBus.Core.Messages;
 using System;
 using System.Threading.Tasks;
 
-namespace PocServiceBus.MessageBus
+namespace PocServiceBus.BusMessaging
 {
     public interface IMessageBus : IDisposable
     {
-        public event ProcessData ProcessMessageReceived;
-        Task SendMessage(IntegrationEvent integrationEvent);
+        Task SendMessage(Message message);
         void RegisterOnMessageHandlerAndReceiveMessages();
     }
 }

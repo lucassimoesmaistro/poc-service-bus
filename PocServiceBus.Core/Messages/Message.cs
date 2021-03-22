@@ -1,4 +1,4 @@
-﻿namespace PocServiceBus.Core
+﻿namespace PocServiceBus.Core.Messages
 {
     public abstract class Message
     {

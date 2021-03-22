@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocServiceBus.MessageBus", "PocServiceBus.MessageBus\PocServiceBus.MessageBus.csproj", "{1D2E53DD-F13D-465A-A3D9-A2EBFC7DFA59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocServiceBus.BusMessaging", "PocServiceBus.MessageBus\PocServiceBus.BusMessaging.csproj", "{1D2E53DD-F13D-465A-A3D9-A2EBFC7DFA59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocServiceBus.Core", "PocServiceBus.Core\PocServiceBus.Core.csproj", "{99E96AC3-70EF-415A-9FFD-7068E918DCE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocServiceBus.Core", "PocServiceBus.Core\PocServiceBus.Core.csproj", "{99E96AC3-70EF-415A-9FFD-7068E918DCE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocServiceBus.Api", "PocServiceBus.Api\PocServiceBus.Api.csproj", "{37D35A9C-645C-45CC-AE98-C52E0DBBAB77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocServiceBus.Api", "PocServiceBus.Api\PocServiceBus.Api.csproj", "{37D35A9C-645C-45CC-AE98-C52E0DBBAB77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

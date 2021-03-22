@@ -1,8 +1,11 @@
-﻿using PocServiceBus.Core.Integration;
+﻿using PocServiceBus.Core.Messages;
 
 namespace PocServiceBus.Api.Events
 {
-    public class ClienteCriadoEvent : IntegrationEvent
+    public class ClienteCriadoEvent : Event
+    {
+    }
+    public class ClienteExcluidoEvent : Event
     {
     }
 }

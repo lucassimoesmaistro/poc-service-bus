@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PocServiceBus.BusMessaging;
 
 namespace PocServiceBus.Api
 {
@@ -26,7 +27,9 @@ namespace PocServiceBus.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMessageBusConfiguration(Configuration);
+            var appSettingsSection = Configuration.GetSection("MessageQueueConfiguration");
+            services.Configure<MessageQueueConfiguration>(appSettingsSection);
+            services.AddMessageBusConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

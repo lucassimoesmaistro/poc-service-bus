@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PocServiceBus.Core\PocServiceBus.Core.csproj" />
-    <ProjectReference Include="..\PocServiceBus.MessageBus\PocServiceBus.MessageBus.csproj" />
+    <ProjectReference Include="..\PocServiceBus.MessageBus\PocServiceBus.BusMessaging.csproj" />
   </ItemGroup>
 
 

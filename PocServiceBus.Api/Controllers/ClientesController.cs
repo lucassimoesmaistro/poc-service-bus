@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PocServiceBus.Api.Events;
 using PocServiceBus.Core.Mediator;
-using PocServiceBus.MessageBus;
+using PocServiceBus.BusMessaging;
 
 namespace PocServiceBus.Api.Controllers
 {
@@ -29,6 +29,15 @@ namespace PocServiceBus.Api.Controllers
             ClienteCriadoEvent clienteCriadoEvent = new ClienteCriadoEvent();
 
             await _bus.SendMessage(clienteCriadoEvent);
+
+            return Ok();
+        }
+        [HttpGet("clientes/delete")]
+        public async Task<IActionResult> excluir()
+        {
+            ClienteExcluidoEvent clienteExcluidoEvent = new ClienteExcluidoEvent();
+
+            await _bus.SendMessage(clienteExcluidoEvent);
 
             return Ok();
         }

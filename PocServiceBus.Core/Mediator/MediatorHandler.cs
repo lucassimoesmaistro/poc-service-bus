@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using PocServiceBus.Core.Messages;
 using System.Threading.Tasks;
 
 namespace PocServiceBus.Core.Mediator

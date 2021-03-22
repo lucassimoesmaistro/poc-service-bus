@@ -1,17 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PocServiceBus.Api.Consumer;
-using PocServiceBus.MessageBus;
+using PocServiceBus.BusMessaging;
 
 namespace PocServiceBus.Api
 {
     public static class MessageBusConfig
     {
-        public static void AddMessageBusConfiguration(this IServiceCollection services,
-            IConfiguration configuration)
+        public static void AddMessageBusConfiguration(this IServiceCollection services)
         {
-            services.AddMessageBus(configuration?.GetSection("MessageQueueConfiguration")?["Connectionstring"],
-                                   configuration?.GetSection("MessageQueueConfiguration")?["QueueName"])
+            services.AddSingleton<IMessageBus, MessageBus>()
                 .AddHostedService<ConsumerService>();
         }
     }

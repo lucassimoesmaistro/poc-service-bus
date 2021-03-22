@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace PocServiceBus.Core
+namespace PocServiceBus.Core.Messages
 {
     public class Event : Message, INotification
     {
